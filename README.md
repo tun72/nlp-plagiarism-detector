@@ -42,6 +42,7 @@ It scans user text sentence-by-sentence, compares it against automatically disco
 ## Plagiarism Detection Pipeline
 
 The main pipeline is implemented in:
+
 - `backend/app/services/plagiarism_engine.py`
 - `backend/app/services/plagiarism_service.py` (route wrapper)
 
@@ -73,6 +74,7 @@ The main pipeline is implemented in:
 ### Step 5: Feature engineering
 
 For each sentence-candidate pair:
+
 - `lexical_score` (TF-IDF cosine similarity)
 - `semantic_score` (embedding cosine similarity or fallback)
 - `overlap_score` (token overlap/Jaccard-style)
@@ -85,6 +87,7 @@ Sentence-level final probability is a multi-layer weighted score:
 `0.40 * NLP + 0.20 * Academic + 0.20 * Website + 0.10 * Google + 0.10 * LLM`
 
 Where:
+
 - NLP = lexical + semantic + evidence features calibrated by `AIPlagiarismDetectorModel`
 - Academic = source-level evidence from academic/book providers
 - Website = source-level evidence from website crawl layer
